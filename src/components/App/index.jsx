@@ -3,6 +3,7 @@ import CardsContainer from '../CardsContainer';
 import Triggers from '../Triggers';
 import AddForm from '../AddForm';
 import { useState } from 'react';
+import { Context } from '../../context';
 
 function App() {
 
@@ -41,12 +42,17 @@ function App() {
     }
   ])
 
+  const delete_card =(id) => setCards(cards.filter(el => el.id !== id));
+  
+
   return (
     <div>
-      <AddForm add_card={add_card} />
-      <CardsContainer card_words={cards} change_lang={change_lang} />
-      <Triggers change_de={change_to_de} change_rus={change_to_rus} />
-    </div>
+      <Context.Provider value={{ add_card, cards, change_lang, delete_card, change_to_de, change_to_rus}}>
+      <AddForm />
+      <CardsContainer />
+      <Triggers />
+      </Context.Provider>
+      </div>
   );
 }
 

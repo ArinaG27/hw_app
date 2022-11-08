@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import Card from '../Card'
 import s from './index.module.css'
+import { Context } from '../../context'
 
-export default function CardsContainer({ card_words, change_lang }) {
+export default function CardsContainer() {
+const { cards } = useContext(Context);
+
   return (
     <div className={s.cards_container}>
       {
-        card_words.map(el => <Card key={el.id} {...el} change_lang={change_lang} />)
+        cards.map(el => <Card key={el.id} {...el} />)
       }
     </div>
   )

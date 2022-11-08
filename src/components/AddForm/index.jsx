@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import s from './index.module.css'
+import { Context } from '../../context';
 
-export default function AddForm({ add_card }) {
+export default function AddForm() {
+
+  const add_card =  useContext (Context);
 
   const submit = event => {
     event.preventDefault();
